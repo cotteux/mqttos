@@ -5,9 +5,9 @@ Using a Node-Red installation, you will have a personnal server with useful oper
 
 You will have 2 versions, The public server Version with limited fonctionnality and private server version.
 
-## Availaible for the Public Verison
+## Available for the Public Version
 
-  **help** : give you the list of available commands.
+  **help** : give you the list of availables commands.
   
   **date** : give you the Date and Time eastern time
   
@@ -27,4 +27,13 @@ You will have 2 versions, The public server Version with limited fonctionnality 
   
   **calc** : base calculator with function : + -  * / () and exp **
   
-  - calc  (56+32)**2/4
+  - calc  (56/4+32)**2
+
+## Available for the Private Version
+
+  **email** : Send email from Meshtastic to internet
+
+  **ssh**  :  connection via meshtastic to a ssh server (web or local)
+
+  **weather** :  Last weather info from openweathermap.org
+  
