@@ -36,6 +36,8 @@ You will have 2 versions:
 
 ## Available for the Private Version
 
+  All commands from the public version are available here.
+
   **email** : Send email from Meshtastic to internet
 
   **ssh**  :  connection via meshtastic to a ssh server (web or local)
