@@ -3,7 +3,10 @@ Personal operating system running on Mqtt for Meshtastic nodes.
 
 Using a Node-Red installation, you will have a personnal server with useful operating system commands.
 
-You will have 2 versions, The public server Version with limited fonctionnality and private server version.
+You will have 2 versions:
+-Public server Version with limited fonctionnality but full privacy and no need of internet. 
+       You can use a small raspberry pi into a server node. I use a small Orange pi one 512 meg and it's work great.
+-Private server version with come with advance options and keeps track of users and log.
 
 ## Available for the Public Version
 
