@@ -8,7 +8,7 @@ You will have 2 versions:
 -Public server Version with limited fonctionnality but full privacy and no need of internet. 
        You can use a small raspberry pi into a server node. I use a small Orange pi one 512 meg and it's work great.
        
--Private server version with come with advance options and keeps track of users and log.
+-Private server version with come with advance options and keeps track of users and log.Also need internet for some functionnalities like email, weather ...
 
 ## Available for the Public Version
 
