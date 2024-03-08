@@ -1,4 +1,4 @@
-# MqttOS
+# MqttOS version 0.2
 Personal operating system running on Mqtt for Meshtastic nodes.
 
 Using a Node-Red installation, you will have a personnal server with useful operating system commands.
