@@ -1,0 +1,591 @@
+[
+    {
+        "id": "3bdb6dd2d08322da",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9e84d90ae51b7575",
+        "type": "mqtt-broker",
+        "name": "Public Meshtastic",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f2e071db503436da",
+        "type": "mqtt-broker",
+        "name": "Meshtastic.org",
+        "broker": "mqtt.meshtastic.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "47cc0c6c465577c3",
+        "type": "mqtt in",
+        "z": "3bdb6dd2d08322da",
+        "name": "All mqtt",
+        "topic": "msh/sherbrooke/2/json/mqtt/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f2e071db503436da",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "2486508e825993d0",
+                "bf9a89168eea77f4"
+            ]
+        ]
+    },
+    {
+        "id": "bf9a89168eea77f4",
+        "type": "switch",
+        "z": "3bdb6dd2d08322da",
+        "name": "Text exist",
+        "property": "payload.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "text",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "sendtext",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 200,
+        "y": 440,
+        "wires": [
+            [
+                "bc8741532a86fde2",
+                "d0de80e56f664eab"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "25c7e1d3bf854ab0",
+        "type": "mqtt out",
+        "z": "3bdb6dd2d08322da",
+        "name": "Send mqtt",
+        "topic": "msh/sherbrooke/2/json/mqtt",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f2e071db503436da",
+        "x": 1530,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "bc8741532a86fde2",
+        "type": "debug",
+        "z": "3bdb6dd2d08322da",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "a2e9b308450e673f",
+        "type": "switch",
+        "z": "3bdb6dd2d08322da",
+        "name": "Command Center",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "date",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "help",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "info",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "calc",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "setting",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "convci",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "convic",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "convfc",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "convcf",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 10,
+        "x": 670,
+        "y": 480,
+        "wires": [
+            [
+                "dc772b9398909508"
+            ],
+            [
+                "94c393cc63bbe890"
+            ],
+            [
+                "08e42b79220609e2"
+            ],
+            [
+                "3d34edd52d244ea8"
+            ],
+            [
+                "c28ee15aee25ad19"
+            ],
+            [
+                "7ed7dc788e29bc8e"
+            ],
+            [
+                "4f804d8ca0e0da7c"
+            ],
+            [
+                "3434c3329e8c48fb"
+            ],
+            [
+                "51d816581ef0eedd"
+            ],
+            [
+                "e79b6526c9076731"
+            ]
+        ]
+    },
+    {
+        "id": "08e42b79220609e2",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "info",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n  \"payload\": \"MqttOS_v0.2                   \\r\\nfrom dhub.ca              \\r\\nMesh ID :\"+sendto};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 480,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "b71ca5e4a2a7c863",
+        "type": "delay",
+        "z": "3bdb6dd2d08322da",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1360,
+        "y": 520,
+        "wires": [
+            [
+                "25c7e1d3bf854ab0"
+            ]
+        ]
+    },
+    {
+        "id": "2486508e825993d0",
+        "type": "debug",
+        "z": "3bdb6dd2d08322da",
+        "name": "DEBUG ALL",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "dc772b9398909508",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "timeConvert",
+        "func": "if ( !msg.timestamp ) msg.timestamp = Math.round(+new Date());\nflow.send = msg.payload.from\nvar dt = new Date(msg.timestamp);\nvar months={1:\"January\",2:\"February\",3:\"March\",4:\"April\",5:\"May\",6:\"June\",7:\"July\",8:\"August\",9:\"September\",10:\"October\",11:\"November\",12:\"December\"};\nvar month=dt.getMonth()+1;\nvar month_name=months[month];\nvar minutes = dt.getMinutes();\nif (dt.getMinutes()<10) minutes = '0'+dt.getMinutes();\nvar msg = {\n    'month':\tmonth_name,\n\t'day':\t\tdt.getDate(),\n\t'year':\t\tdt.getFullYear(),\n\t'hours':\tdt.getHours(),\n\t'mins':\t\tminutes,\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 400,
+        "wires": [
+            [
+                "ce734057dc3c9cc7"
+            ]
+        ]
+    },
+    {
+        "id": "ce734057dc3c9cc7",
+        "type": "template",
+        "z": "3bdb6dd2d08322da",
+        "name": "date Format",
+        "field": "payload.payload.text",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{month}} {{day}} {{year}} {{hours}}:{{mins}}",
+        "output": "str",
+        "x": 1010,
+        "y": 400,
+        "wires": [
+            [
+                "cc0407ea04620b63"
+            ]
+        ]
+    },
+    {
+        "id": "cc0407ea04620b63",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "Date",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\": 3,\n  \"type\":\"sendtext\",\n  \"payload\": msg.payload.payload.text\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 400,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "94c393cc63bbe890",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "help",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n\"payload\":\"calc ,convic,convci, convfc, convcf, date, info, setting\"\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 440,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "3d34edd52d244ea8",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "calc",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nlet text = msg.payload.payload.text;\nlet calc = 0;\nlet found = text.match(/[a-zA-Z]/);\nif (found==null) {   calc = eval(text); } \nelse {  text = \"Error only accept 0-9 ()+-*/\";  }\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n  \"payload\":text+\"= \"+calc};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 520,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "d0de80e56f664eab",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "split",
+        "func": "var data=msg.payload.payload.text\nvar temp=data.split(\" \");\nif (temp[0] !=\"\") {\n    msg.command=temp[0].toLowerCase();\n}\nif (temp[1] !=\"\") {\n    msg.payload.payload.text=temp[1];\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 440,
+        "wires": [
+            [
+                "ca566471773e5c22"
+            ]
+        ]
+    },
+    {
+        "id": "c28ee15aee25ad19",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "setting",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n  \"payload\": \"|^^^^^^^^^^^^^^^^^^^^^^^^| |            SSD_1306           | |____________________|\"};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 560,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "7ed7dc788e29bc8e",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "convert cm2inch",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nlet text = msg.payload.payload.text;\nlet calc;\nlet found = text.match(/[a-zA-Z]/);\nif (found==null) { calc = eval(text/2.54).toFixed(2); }\nelse { calc= \"Error only number\"; }\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n  \"payload\":text+\" cm = \"+calc+\" inchs\"};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 600,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "ca566471773e5c22",
+        "type": "change",
+        "z": "3bdb6dd2d08322da",
+        "name": "CONFIG",
+        "rules": [
+            {
+                "t": "set",
+                "p": "send",
+                "pt": "flow",
+                "to": "payload.from",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "server",
+                "pt": "flow",
+                "to": "1976459704",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 460,
+        "wires": [
+            [
+                "a2e9b308450e673f"
+            ]
+        ]
+    },
+    {
+        "id": "4f804d8ca0e0da7c",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "convert inch2cm",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nlet text = msg.payload.payload.text\nlet calc;\nlet found = text.match(/[a-zA-Z]/);\nif (found==null) { calc = eval(text*2.54).toFixed(2); }\nelse { calc= \"Error only number\"; }\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n\"payload\":text+\" inchs = \"+calc+\" cm\"};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 640,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "3434c3329e8c48fb",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "convert F2C",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nlet text = msg.payload.payload.text\nlet calc;\nlet found = text.match(/[a-zA-Z]/);\nif (found==null) { calc = eval((text-32)*5/9).toFixed(2); }\nelse { calc= \"Error only number\"; }\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n\"payload\":text+\" °F = \"+calc+\" °C\"};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 680,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "e79b6526c9076731",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "error",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n\"payload\":\"Error! Command not found. Use Help for list of availables commands.\"\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 1020,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    },
+    {
+        "id": "51d816581ef0eedd",
+        "type": "function",
+        "z": "3bdb6dd2d08322da",
+        "name": "convert C2F",
+        "func": "let sendto = flow.get(\"send\");\nlet fromto = flow.get(\"server\");\nlet text = msg.payload.payload.text\nlet calc;\nlet found = text.match(/[a-zA-Z]/);\nif (found==null) { calc = eval((text*9/5)+32).toFixed(2); }\nelse { calc= \"Error only number\"; }\nmsg.payload = {\n  \"from\":fromto,\n  \"to\":sendto,\n  \"channel\":3,\n  \"type\":\"sendtext\",\n\"payload\":text+\" °C = \"+calc+\" °F\"};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 720,
+        "wires": [
+            [
+                "b71ca5e4a2a7c863"
+            ]
+        ]
+    }
+]
