@@ -10,6 +10,10 @@ You will have 2 versions:
        
 -Private server version with come with advance options and keeps track of users and log.Also need internet for some functionnalities like email, weather ...
 
+## Flow of the Public Version
+
+![Node-red](Capture22.PNG)
+
 ## Available for the Public Version
 
   **help** : give you the list of availables commands.
