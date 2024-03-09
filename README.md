@@ -44,3 +44,8 @@ You will have 2 versions:
 
   **weather** :  Last weather info from openweathermap.org
   
+
+## Some infos useful for an installation :
+
+configure MQTT in MEshtastic : https://meshtastic.org/docs/configuration/module/mqtt/
+configure Node-red : https://medium.com/digitalindustry/connecting-node-red-and-mqtt-broker-4d87dc05e814
